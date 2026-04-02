@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Akbar | Full Professional Portfolio 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a; --card: #0f172a; --accent: #00f2ff;
+            --cyber: #ff003c; --tech: #39ff14; --text: #e2e8f0; --border: #1e293b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; line-height: 1.6; padding-top: 100px; }
+
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; 
+            background: rgba(5, 7, 10, 0.95); position: fixed; width: 100%; top:0; z-index: 1000;
+            border-bottom: 1px solid var(--border); backdrop-filter: blur(20px);
+        }
+        .logo { font-family: 'Fira Code'; font-weight: 800; color: var(--accent); font-size: 1.2rem; }
+        .sys-status { color: var(--tech); font-size: 0.7rem; font-weight: bold; border: 1px solid var(--tech); padding: 2px 10px; border-radius: 5px; }
+
+        header { padding: 60px 8%; text-align: center; }
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .hero-title span { color: var(--accent); text-shadow: 0 0 20px rgba(0,242,255,0.3); }
+        .hero-sub { color: #94a3b8; max-width: 800px; margin: 0 auto 30px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
+        .stat-box { background: var(--card); border: 1px solid var(--border); padding: 15px; border-radius: 12px; transition: 0.3s; }
+        .stat-box:hover { border-color: var(--accent); background: rgba(0, 242, 255, 0.02); }
+        .stat-box h4 { color: var(--accent); font-size: 1.4rem; }
+        .stat-box p { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 600; }
+
+        .container { padding: 40px 8% 80px; }
+        .section-tag { color: var(--accent); font-family: 'Fira Code'; font-size: 0.9rem; margin-bottom: 5px; display: block; border-left: 3px solid var(--accent); padding-left: 10px; }
+        .section-title { font-size: 2.2rem; color: #fff; margin-bottom: 40px; letter-spacing: -1px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
+
+        .card-toggle { display: none; }
+
+        .card { 
+            background: var(--card); border: 1px solid var(--border); border-radius: 20px; 
+            padding: 30px; cursor: pointer; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative; display: flex; flex-direction: column; height: fit-content;
+        }
+        .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        .card-label { font-size: 0.65rem; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .card-label::before { content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--accent); }
+        .card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .card .brief { color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+
+        .plus-icon { position: absolute; top: 30px; right: 30px; width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.5s; background: rgba(255,255,255,0.02); }
+        .plus-icon::before { content: '+'; color: var(--accent); font-size: 1.3rem; }
+
+        .details { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        .card-toggle:checked + .card .details { max-height: 2500px; opacity: 1; padding-top: 25px; margin-top: 10px; }
+        .card-toggle:checked + .card .plus-icon { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); }
+        .card-toggle:checked + .card .plus-icon::before { color: var(--bg); }
+
+        .info-block { margin-bottom: 25px; }
+        .info-block h5 { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1.5px; }
+        .long-desc { font-size: 0.88rem; color: #cbd5e1; background: rgba(0,0,0,0.4); padding: 18px; border-radius: 12px; border-right: 4px solid var(--accent); margin-bottom: 15px; line-height: 1.8; }
+
+        .skill-list { list-style: none; font-family: 'Fira Code', monospace; }
+        .skill-list li { font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .skill-list li::before { content: "➜"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+        .cert-container { margin-top: 25px; border-radius: 15px; overflow: hidden; border: 1px solid var(--border); background: #000; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .cert-img { width: 100%; display: block; opacity: 0.85; transition: 0.5s; }
+        .cert-img:hover { opacity: 1; transform: scale(1.03); }
+        .cert-caption { font-size: 0.7rem; padding: 12px; text-align: center; color: #64748b; background: #111b2d; border-top: 1px solid var(--border); font-style: italic; }
+
+        footer { border-top: 1px solid var(--border); padding: 80px 8% 40px; text-align: center; margin-top: 100px; background: rgba(15, 23, 42, 0.3); }
+        .foot-text { color: #64748b; font-size: 0.85rem; max-width: 600px; margin: 0 auto; }
+
+        .cyber-card { border-top: 5px solid var(--cyber); }
+        .net-card { border-top: 5px solid var(--tech); }
+        .org-card { border-top: 5px solid #f59e0b; }
+        .skill-card { border-top: 5px solid #8b5cf6; }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .container { padding: 40px 5%; } }
+
+        /* --- KODE BARU DI SINI --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 7, 10, 0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
+            border-radius: 10px;
+            transform: scale(0.9);
+            transition: 0.3s ease;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox.active img { transform: scale(1); }
+        .close-lb {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: var(--accent);
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        /* --- BATAS AKHIR KODE BARU --- */
+
+            /* Sidebar Style */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Sembunyi di kiri */
+    width: 300px;
+    height: 100%;
+    background: rgba(10, 15, 25, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 2100;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid var(--accent);
+    padding: 80px 30px;
+}
+
+.menu-overlay.active {
+    left: 0; /* Muncul dari kiri */
+}
+
+.menu-content a {
+    display: block;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 25px;
+    font-family: 'Fira Code';
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+}
+
+.menu-content a:hover {
+    color: var(--accent);
+    padding-left: 10px;
+    border-bottom: 1px solid var(--accent);
+}
+
+.sys-status {
+    color: var(--tech);
+    font-size: 0.65rem;
+    border: 1px solid var(--tech);
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: rgba(57, 255, 20, 0.05);
+    font-family: 'Fira Code';
+}
+
+/* Efek Scroll Halus */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Penataan Menu Navigasi */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #39ff14; /* Warna hijau neon khas cyber kamu */
+}
+
+/* Supaya navigasi tetap di atas saat di-scroll */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+ /* CSS Tambahan */
+        .profile-wrap { position: relative; width: 150px; height: 150px; margin: 0 auto 25px; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); padding: 5px; background: var(--bg); box-shadow: 0 0 30px rgba(0, 242, 255, 0.3); }
+        .social-bar { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
+        .social-item { background: var(--card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 50px; color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 600; transition: 0.3s; }
+        .social-item:hover { border-color: var(--accent); color: var(--accent); }
+        .menu-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: rgba(5, 7, 10, 0.98); z-index: 2100; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; }
+        .menu-overlay.active { right: 0; }
+        .menu-content a { font-size: 2rem; color: #fff; text-decoration: none; margin: 15px; font-weight: 700; font-family: 'Fira Code'; }
+
+        /* --- TAMPILAN MENU DROPDOWN TITIK TIGA --- */
+        .dropdown-content {
+            display: none; /* Sembunyi sebelum diklik */
+            position: absolute;
+            right: 0;
+            background-color: #0f172a; /* Warna gelap sesuai tema card */
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            z-index: 1100;
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #ffffff !important; /* TEKS WARNA PUTIH */
+            padding: 12px 16px;
+            text-decoration: none; /* Menghapus garis bawah */
+            display: block;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent); /* Warna biru saat kursor di atasnya */
+            color: #05070a !important; /* Teks jadi hitam saat hover supaya kontras */
+        }
+
+        /* Class untuk memunculkan menu via JavaScript */
+        .show { display: block !important; }
+
+    </style>
+
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: rgba(5, 7, 10, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); backdrop-filter: blur(20px);">
+        <div class="logo">ALI AKBAR.PRO</div>
+        
+        <ul class="nav-links" style="margin: 0 auto; display: flex; list-style: none; gap: 20px;">
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#group01">Group 1</a></li>
+            <li><a href="#group02">Group 2</a></li>
+            <li><a href="#group03">Group 3</a></li>
+            <li><a href="#group04">Group 4</a></li>
+            <li><a href="#group05">Group 5</a></li>
+        </ul>
+
+        <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
+            <div class="sys-status">CERTIFIED SPECIALIST 2026</div>
+            
+            <div class="menu-container" style="position: relative; display: inline-block;">
+                <div class="menu-dots" onclick="toggleMenu()" style="cursor: pointer; display: flex; flex-direction: column; gap: 4px; padding: 10px;">
+                    <span style="width: 5px; height: 5px; background: var(--accent); border-radius: 50%;"></span>
+                    <span style="width: 5px; height: 5px; background: var(--accent); border-radius: 50%;"></span>
+                    <span style="width: 5px; height: 5px; background: var(--accent); border-radius: 50%;"></span>
+                </div>
+                
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick="copyLink(); return false;">🔗 Salin Link Portofolio</a>
+                </div>
+            </div>
+            </div>
+    </nav>
+
+    <div style="margin-top: 50px;"></div>
+
+    <div class="profile-wrap">
+        <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\foto.jpeg" class="profile-img" alt="Ali Akbar  Profile">
+    </div>
+
+    <div class="social-bar">
+        <a href="https://wa.me/6281549330703" target="_blank" class="social-item">WHATSAPP</a>
+        <a href="https://www.linkedin.com/in/ali-akbar-ab3140327" target="_blank" class="social-item">LINKEDIN</a>
+        <a href="https://www.instagram.com/ali044bq_" target="_blank" class="social-item">INSTAGRAM</a>
+    </div>
+
+    <div style="max-width: 800px; margin: 0 auto 40px; text-align: center; padding: 0 20px;">
+        <p style="font-family: 'Fira Code', monospace; color: var(--accent); font-size: 0.85rem; margin-bottom: 15px; letter-spacing: 2px;">
+            ​PROFESSIONAL PROFILE | ABOUT ME
+        </p>
+        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.8; font-weight: 300;">
+            Halo, saya <strong style="color: #fff;">Ali Akbar</strong>. Sebagai mahasiswa <strong style="color: var(--tech);">Teknologi Informasi</strong>, saya mendedikasikan diri dalam mengeksplorasi dunia <strong style="color: var(--cyber);">Cybersecurity</strong> dan <strong style="color: var(--accent);">Networking</strong>. Dengan kombinasi latar belakang akademis dan sertifikasi BNSP, saya fokus pada penguatan infrastruktur digital dan mitigasi ancaman siber modern.
+        </p>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content" style="display: flex; flex-direction: column; align-items: center;">
+            <a href="#home" onclick="toggleMenu()">BERANDA</a>
+            <a href="#vault" onclick="toggleMenu()">VAULT ASET</a>
+            <a href="https://wa.me/6281549330703" target="_blank">WHATSAPP</a>
+        </div>
+    </div>
+    </style>
+</head>
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-group">//  Ali Akbar SECURITY, NETWORKING & ADMINISTRATOR //</div>
+        <div class="hero">
+            <h1 class="hero-title">Digital <span>Asset Vault</span></h1>
+            <p class="hero-sub">Koleksi 28 Sertifikat & Lisensi Profesional Ali Akbar. Mahasiswa S1 Teknologi Informasi Universitas Sapta Mandiri. Fokus pada Keamanan Siber, Administrasi Jaringan, dan Manajemen Media.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-box"><h4>3.79 /4.00</h4><p>GPA Score</p></div>
+                <div class="stat-box"><h4>BNSP</h4><p>Competency</p></div>
+                <div class="stat-box"><h4>Memiliki  28</h4><p>Certificates</p></div>
+                <div class="stat-box"><h4>Balangan</h4><p>Base Loc</p></div>
+                <div class="stat-box"><h4>Hima TI & HIPMI PT</h4><p>Leadership</p></div>
+            </div> 
+        </div>
+    </header>
+
+    <div class="container" id="group01">
+        <span class="section-tag">GROUP 01 // SECURITY & NETWORKING</span>
+        <h2 class="section-title">Core IT Infrastructure</h2>
+
+        <div class="grid">
+            
+            <label for="check-cyber">
+                <input type="checkbox" id="check-cyber" class="card-toggle">
+                <div class="card cyber-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP TIK Global</span>
+                    <h3>Junior Cybersecurity Specialist</h3>
+                    <p class="brief">Sertifikasi kompetensi negara dalam identifikasi ancaman dan perlindungan data nasional.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Sertifikasi ini mengakui kemampuan teknis saya dalam mengoperasikan sistem keamanan informasi sesuai standar industri. Saya memiliki kompetensi dalam menganalisis kerentanan, melakukan mitigasi serangan siber, serta memastikan integritas dan kerahasiaan data organisasi tetap terjaga dari ancaman eksternal maupun internal.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <ul class="skill-list">
+    <li>Identifikasi Serangan Siber (Malware, Phishing, SQLi).</li>
+    <li>Penerapan Kontrol Akses Jaringan & Enkripsi Data.</li>
+    <li>Audit Keamanan Digital Berkala.</li>
+    <li>Lembaga Sertifikasi: LSP TIK Global.</li>
+
+    <li><strong>Kode Unit Kompetensi:</strong></li>
+    <li>J.62090.001.01 - Prinsip Perlindungan Informasi</li>
+    <li>J.62090.003.01 - Keamanan Informasi Internet</li>
+    <li>J.62090.006.01 - Kebijakan Keamanan Informasi</li>
+    <li>J.62090.009.01 - Prosedur Keamanan Informasi</li>
+    <li>J.62090.011.01 - Standar Keamanan Informasi</li>
+    <li>J.62090.012.01 - Persyaratan Keamanan Informasi</li>
+    <li>J.62090.027.01 - Konfigurasi Keamanan</li>
+    <li>J.62090.032.01 - Kontrol Akses</li>
+</ul>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\cyber-bnsp.jpeg" class="cert-img">
+                            <div class="cert-caption">Asset ID: 58570_Cyber_BNSP</div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-net">
+                <input type="checkbox" id="check-net" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP Media Informatika</span>
+                    <h3>Junior Network Administrator</h3>
+                    <p class="brief">Spesialisasi dalam manajemen infrastruktur jaringan, switch, dan routing protokol.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Memiliki kualifikasi resmi untuk merancang dan memelihara infrastruktur jaringan komputer. Mampu melakukan konfigurasi perangkat Cisco/Mikrotik, mengelola segmen jaringan melalui VLAN, serta memastikan rute data efisien menggunakan protokol routing statis dan dinamis untuk skala enterprise kecil hingga menengah.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                            <ul class="skill-list">
+    <li>Konfigurasi Switch (VLAN & Trunking).</li>
+    <li>Implementasi Routing (Static & OSPF).</li>
+    <li>Troubleshooting Konektivitas Jaringan LAN/WAN.</li>
+    <li>ID Sertifikat: Administrator Muda / Network Administrator.</li>
+
+    <li><strong>Kode Unit Kompetensi:</strong></li>
+    <li>J.611000.004.01 - Design Network Address</li>
+    <li>J.611000.010.02 - Install Wireless Network</li>
+    <li>J.611000.012.02 - Configure Switch</li>
+    <li>J.611000.013.02 - Routing Dalam Autonomous System</li>
+    <li>J.611000.014.02 - Routing Antar Autonomous System</li>
+</ul>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\network-bnsp.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-thm25">
+                <input type="checkbox" id="check-thm25" class="card-toggle">
+                <div class="card cyber-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">TryHackMe International</span>
+                    <h3>Advent of Cyber 2025 Specialist</h3>
+                    <p class="brief">Penyelesaian 24 hari tantangan keamanan siber intensif berskala internasional.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Program ini merupakan pelatihan praktis (Hands-on) yang mencakup berbagai skenario serangan siber dunia nyata. Selama 24 hari, saya berhasil menyelesaikan lab terkait eksploitasi web, keamanan cloud, dan forensik digital, serta memahami peran AI dalam memperkuat pertahanan siber masa depan.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <li>Digital Forensics & Incident Response (DFIR).</li>
+                                <li>Analisis Kerentanan Aplikasi Web.</li>
+                                <li>Manajemen Keamanan Cloud & Log Analysis.</li>
+                                <li>Verify ID: THM-2TEDF5JC64.</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\thm-2025.jpg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-thm24">
+                <input type="checkbox" id="check-thm24" class="card-toggle">
+                <div class="card cyber-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">TryHackMe International</span>
+                    <h3>Advent of Cyber 2024 Participant</h3>
+                    <p class="brief">Fondasi awal dalam memahami teknik hacking etis dan pertahanan siber.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Aset ini menandai langkah awal saya dalam mendalami dunia Cybersecurity. Pelatihan ini memfokuskan pada dasar-dasar jaringan untuk hacking, eksploitasi sistem operasi Linux, serta pengenalan terhadap alat-alat pentesting standar industri yang digunakan oleh para profesional siber global.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <li>Pengenalan Linux for Hacking.</li>
+                                <li>Dasar-Dasar Networking & Scanning.</li>
+                                <li>Pemahaman Mitigasi Serangan Dasar.</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\thm-2024.jpg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-cyber">
+                <input type="checkbox" id="check-lppm-cyber" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Cyber Security (LPPM)</h3>
+                    <p class="brief">Program percepatan talenta digital daerah untuk perlindungan data publik.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Program kolaborasi strategis antara pemerintah daerah dan universitas. Pelatihan ini menitikberatkan pada pengamanan infrastruktur informasi di level pemerintahan daerah, edukasi kesadaran siber bagi masyarakat, serta manajemen privasi data sesuai dengan standar hukum yang berlaku di Indonesia.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <li>Strategi Perlindungan Data Sektor Publik.</li>
+                                <li>Cyber Hygiene & Awareness Training.</li>
+                                <li>Implementasi UU ITE dalam Organisasi.</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\cyber-lppm.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-tek">
+                <input type="checkbox" id="check-lppm-tek" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Teknisi Komputer (LPPM)</h3>
+                    <p class="brief">Keahlian dalam diagnosa, perbaikan, dan pemeliharaan perangkat keras komputer.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Sertifikat ini memvalidasi kemampuan saya dalam menangani masalah fisik pada perangkat IT. Meliputi perakitan komputer workstation, optimasi komponen hardware, hingga teknik perbaikan mendalam pada sirkuit elektronik dasar yang mendukung operasional infrastruktur IT perusahaan.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <li>Hardware Assembly & Stress Testing.</li>
+                                <li>Troubleshooting Komponen Motherboard & PSU.</li>
+                                <li>Optimasi BIOS & Manajemen Sistem Operasi.</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\teknisi-lppm.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            </label>          
+        </div>
+    </div>
+
+    <div class="container" id="group02">
+        <span class="section-tag">GROUP 02 // CAMPUS DIGITAL TRAINING (LPPM)</span>
+        <h2 class="section-title">Academic Tech Assets</h2>
+
+        <div class="grid">
+            
+            <label for="check-lppm-jaringan">
+                <input type="checkbox" id="check-lppm-jaringan" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Jaringan Komputer</h3>
+                    <p class="brief">Implementasi infrastruktur LAN, konfigurasi Switch, dan Routing.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+                                <li>J.611000.004.01 - Merancang Pengalamatan Jaringan</li>
+                                <li>J.611000.010.02 - Memasang Jaringan Nirkabel</li>
+                                <li>J.611000.012.02 - Konfigurasi Switch pada Jaringan</li>
+                                <li>J.611000.013.02 - Konfigurasi Routing (Intra AS)</li>
+                                <li>J.611000.014.02 - Konfigurasi Routing (Inter AS)</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\jaringan-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-staff">
+                <input type="checkbox" id="check-lppm-staff" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Staff Administrasi</h3>
+                    <p class="brief">Tata kelola administrasi perkantoran dan manajemen sumber daya manusia.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+                                <li>M.70SDM01.010.2 - Menyusun Uraian Jabatan</li>
+                                <li>M.70SDM01.057.2 - Administrasi Pengupahan</li>
+                                <li>M.70SDM01.058.2 - Administrasi Jaminan Sosial</li>
+                                <li>M.70SDM01.059.2 - Administrasi Penerapan Kebijakan MSDM</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\staff-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-design">
+                <input type="checkbox" id="check-lppm-design" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Desain Grafis</h3>
+                    <p class="brief">Komunikasi visual melalui prinsip desain dan software kreatif.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+                                <li>M.74100.001.02 - Prinsip Dasar Desain</li>
+                                <li>M.74100.002.02 - Prinsip Dasar Komunikasi</li>
+                                <li>M.74100.005.02 - Menerapkan Design Brief</li>
+                                <li>M.74100.009.02 - Mengoperasikan Software Desain</li>
+                                <li>M.74100.010.01 - Menciptakan Karya Desain</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\desain-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-office">
+                <input type="checkbox" id="check-lppm-office" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Pelatihan Office Operator</h3>
+                    <p class="brief">Otomatisasi dokumen dan produktivitas digital perkantoran.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+                                <li>J.63OPR00.003.2 - Menggunakan Peralatan Peripheral</li>
+                                <li>J.63OPR00.004.2 - Software Pengolah Kata (Dasar)</li>
+                                <li>J.63OPR00.005.2 - Software Lembar Sebar (Dasar)</li>
+                                <li>J.63OPR00.006.2 - Software Presentasi (Dasar)</li>
+                                <li>J.63OPR00.009.2 - Aplikasi Berbasis Internet</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\office-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-dm-1">
+                <input type="checkbox" id="check-lppm-dm-1" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Digital Marketing (Elemen Dasar)</h3>
+                    <p class="brief">Riset merek, rencana pemasaran, dan target penjualan digital.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+    <li>M.702090.001.01 - Identifikasi Elemen Pemasaran Perusahaan</li>
+    <li>M.702090.009.01 - Merencanakan Riset Terhadap Sebuah Merek</li>
+    <li>M.702090.014.01 - Menyusun Rencana Penjualan Produk/Jasa</li>
+    <li>M.702090.020.01 - Menyusun Rencana Pemasaran Digital</li>
+    <li>M.702090.021.01 - Formula Prediksi & Target Penjualan</li>
+    <li>Analisis Target Audiens & Segmentasi Pasar</li>
+    <li>Riset Keyword & Tren Industri Digital</li>
+
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\marketing-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-lppm-dm-2">
+                <input type="checkbox" id="check-lppm-dm-2" class="card-toggle">
+                <div class="card net-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Univ. Sapta Mandiri</span>
+                    <h3>Digital Marketing (Aplikasi & Medsos)</h3>
+                    <p class="brief">Manajemen media sosial dan eksekusi promosi produk.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Unit Kompetensi (SKKNI):</h5>
+                            <ul class="skill-list">
+    <li>M.702093.003.01 - Merencanakan Promosi Produk Digital</li>
+    <li>M.731000.001.01 - Membuat Rencana Periklanan (Ads)</li>
+    <li>J.63OPR00.010.02 - Mengelola Aplikasi Media Sosial</li>
+    <li>Penyusunan Kalender Konten (Content Scheduling)</li>
+    <li>Copywriting untuk Media Sosial & Promosi</li>
+    <li>Analisis Metrik & Engagement Media Sosial</li>
+    <li>Manajemen Kampanye Iklan Berbayar</li>
+</ul>
+                            </ul>
+                        </div>
+                        <div class="cert-container"><img src="C:\Users\user\OneDrive\Dokumen\sertifikat\marketing2-lppm.jpeg" class="cert-img"></div>
+                    </div>
+                </div>
+            </label>
+
+        </div>
+    </div>
+
+    <div class="container" id="group03">
+        <span class="section-tag">GROUP 03 // PROFESIONAL COMPETENCY (LPPM)</span>
+        <h2 class="section-title">Industry Standard Certification</h2>
+
+        <div class="grid">
+            
+            <label for="check-off-bnsp">
+                <input type="checkbox" id="check-off-bnsp" class="card-toggle">
+                <div class="card skill-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP Media Informatika</span>
+                    <h3>Junior Office Operator</h3>
+                    <p class="brief">Kompetensi nasional dalam otomatisasi administrasi perkantoran dan pengolahan data digital.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Sertifikasi ini memvalidasi kemampuan saya dalam mengoperasikan perangkat lunak perkantoran tingkat dasar hingga menengah. Fokus utama adalah efisiensi alur kerja digital, mulai dari pengolahan kata, data angka (spreadsheet), hingga manajemen komunikasi elektronik yang menjadi tulang punggung operasional setiap organisasi modern.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Daftar Unit Kompetensi:</h5>
+                            <ul class="skill-list">
+                                <li>J.63OPR00.003.2 - Menggunakan Peralatan Peripheral</li>
+                                <li>J.63OPR00.004.2 - Menggunakan Perangkat Lunak Pengolah Kata Tingkat Dasar</li>
+                                <li>J.63OPR00.005.2 - Menggunakan Perangkat Lunak Lembar Sebar Tingkat Dasar</li>
+                                <li>J.63OPR00.006.2 - Menggunakan Perangkat Lunak Presentasi Tingkat Dasar</li>
+                                <li>J.63OPR00.008.2 - Menggunakan Perangkat Lunak Pengakses Surat Elektronik</li>
+                                <li>J.63OPR00.009.2 - Menggunakan Aplikasi Berbasis Internet (Literacy)</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                        <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\office-bnsp.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+            
+            <label for="check-off-gad">
+                <input type="checkbox" id="check-off-gad" class="card-toggle">
+                <div class="card skill-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">LPK GADING JAYA - Predikat: A</span>
+                    <h3>Office Operator Specialist</h3>
+                    <p class="brief">Penyelesaian program pelatihan intensif dengan predikat nilai "Sangat Memuaskan".</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Program ini merupakan kerjasama antara Dinas Koperasi UKM & Tenaga Kerja Kab. Balangan dengan LPK Gading Jaya. Sertifikasi ini membuktikan kemahiran praktis saya dalam paket produktivitas Microsoft Office dengan standar akurasi tinggi dan efisiensi waktu pengerjaan yang optimal.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Prestasi Belajar (Transkrip Nilai):</h5>
+                            <ul class="skill-list">
+                                <li>Microsoft Word: <strong>88 (Grade A)</strong></li>
+                                <li>Microsoft Excel: <strong>87 (Grade A)</strong></li>
+                                <li>Microsoft Powerpoint: <strong>86 (Grade A)</strong></li>
+                                <li>Status Kelulusan: <strong>Sangat Memuaskan</strong></li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\office-gading.jpeg" class="cert-img">
+                            <div class="cert-caption">No Sertifikat: 021/LPK-GJ/V/2025</div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-hrd">
+                <input type="checkbox" id="check-hrd" class="card-toggle">
+                <div class="card org-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP MSDM Unggul Indonesia</span>
+                    <h3>Human Resources Staff</h3>
+                    <p class="brief">Spesialisasi dalam manajemen administrasi SDM dan implementasi kebijakan organisasi.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Memahami struktur fundamental manajemen sumber daya manusia. Saya kompeten dalam menyusun deskripsi jabatan yang sistematis, mengelola administrasi pengupahan, serta memastikan implementasi kebijakan MSDM berjalan sesuai dengan regulasi dan jaminan sosial yang berlaku.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Daftar Unit Kompetensi:</h5>
+                            <ul class="skill-list">
+                                <li>M.70SDM01.010.2 - Menyusun Uraian Jabatan</li>
+                                <li>M.70SDM01.057.2 - Melakukan Administrasi Pengupahan</li>
+                                <li>M.70SDM01.058.2 - Melakukan Administrasi Jaminan Sosial</li>
+                                <li>M.70SDM01.059.2 - Melakukan Administrasi Penerapan Kebijakan MSDM</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\hrd-bnsp.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-graph">
+                <input type="checkbox" id="check-graph" class="card-toggle">
+                <div class="card skill-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP Media Informatika</span>
+                    <h3>Junior Graphic Designer</h3>
+                    <p class="brief">Visualisasi pesan melalui prinsip desain grafis dan pengoperasian software kreatif.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Menggabungkan estetika visual dengan fungsi komunikasi teknis. Sertifikasi ini mengakui kemampuan saya dalam menerjemahkan design brief menjadi karya visual yang efektif, menggunakan perangkat lunak desain standar industri untuk mendukung kebutuhan branding dan informasi.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Daftar Unit Kompetensi:</h5>
+                            <ul class="skill-list">
+                                <li>M.74100.001.02 - Mengaplikasikan Prinsip Dasar Desain</li>
+                                <li>M.74100.002.02 - Menerapkan Prinsip Dasar Komunikasi</li>
+                                <li>M.74100.005.02 - Menerapkan Design Brief</li>
+                                <li>M.74100.009.02 - Mengoperasikan Perangkat Lunak Desain</li>
+                                <li>M.74100.010.01 - Menciptakan Karya Desain</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\graphic-bnsp.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-web-gev">
+                <input type="checkbox" id="check-web-gev" class="card-toggle">
+                <div class="card skill-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">LPK GEVARION</span>
+                    <h3>Pemrograman Web (Full Stack)</h3>
+                    <p class="brief">Pelatihan intensif pengembangan aplikasi web menggunakan HTML, CSS, dan JavaScript.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Sertifikasi ini memvalidasi kemampuan saya dalam membangun struktur website yang responsif dan interaktif. Pelatihan ini mencakup logika pemrograman sisi klien, desain antarmuka pengguna (UI), serta pengalaman pengguna (UX) untuk standar industri modern.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Key Competencies:</h5>
+                            <ul class="skill-list">
+                                <li>Struktur Dokumen HTML5 & SEO Friendly.</li>
+                                <li>Styling Modern dengan CSS3 & Flexbox.</li>
+                                <li>Implementasi Desain Responsif (Mobile First).</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\pemrograman-lpk.jpeg" class="cert-img">
+                            <div class="cert-caption">Asset ID: 58558_Web_Gevarion</div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-mark">
+                <input type="checkbox" id="check-mark" class="card-toggle">
+                <div class="card org-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">BNSP - LSP Media Informatika</span>
+                    <h3>Digital Marketing Specialist</h3>
+                    <p class="brief">Strategi pemasaran berbasis data, perencanaan iklan, dan manajemen media sosial.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Memiliki kualifikasi untuk merancang ekosistem pemasaran digital yang komprehensif. Mulai dari riset merek, perencanaan penjualan, hingga eksekusi strategi kreatif di media sosial. Sangat menunjang peran strategis dalam membangun kehadiran digital organisasi atau bisnis.</p>
+                        </div>
+                        <div class="info-block">
+                            <h5>Daftar Unit Kompetensi:</h5>
+                            <ul class="skill-list">
+                                <li>M.702090.009.01 - Merencanakan Riset Terhadap Sebuah Merek</li>
+                                <li>M.702090.014.01 - Menyusun Rencana Penjualan</li>
+                                <li>M.702090.020.01 - Menyusun Rencana Pemasaran</li>
+                                <li>M.702093.003.01 - Merencanakan Promosi Produk</li>
+                                <li>M.731000.001.01 - Membuat Rencana Periklanan</li>
+                                <li>M.702090.021.01 - Menyusun Formula Prediksi dan Target Penjualan</li>
+                                <li>J.63OPR00.010.02 - Menggunakan Aplikasi Berbasis Media Sosial</li>
+                            </ul>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\marketing-bnsp.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+        </div>
+    </div>
+
+    <div class="container"id="group04">
+        <span class="section-tag">GROUP 04 // MULTI-TALENT & LIFESTYLE</span>
+        <h2 class="section-title">Entrepreneurship & General Skills</h2>
+
+        <div class="container">
+        <span class="section-tag" style="background: #fbbf24; color: #000;">OFFICIAL STATE DOCUMENT</span>
+        <h2 class="section-title">Labor Identification Asset</h2>
+
+        <div class="grid" style="display: flex; justify-content: center;">
+            
+            <label for="check-kartu-kuning" style="width: 100%; max-width: 500px;">
+                <input type="checkbox" id="check-kartu-kuning" class="card-toggle">
+                <div class="card" style="border-top: 5px solid #fbbf24; background: linear-gradient(145deg, #1a1a1a, #252525);">
+                    <div class="plus-icon"></div>
+                    <span class="card-label" style="color: #fbbf24; font-weight: bold;">DISNAKER KAB. BALANGAN</span>
+                    <h3>Kartu Tanda Bukti Pendaftaran Pencari Kerja (AK/I)</h3>
+                    <p class="brief">Dokumen legalitas tenaga kerja resmi yang diterbitkan oleh Dinas Tenaga Kerja dan Transmigrasi.</p>
+                    
+                    <div class="details">
+                        <div class="info-block" style="border-left: 3px solid #fbbf24; padding-left: 15px;">
+                            <h5>Informasi Legalitas:</h5>
+                            <p class="long-desc">
+                                Berfungsi sebagai instrumen resmi dalam pemenuhan persyaratan administratif lamaran kerja di instansi pemerintahan maupun swasta, serta sebagai basis data tenaga kerja kompeten di wilayah Kabupaten Balangan.
+                            </p>
+                        </div>
+                        <div class="cert-container" style="margin-top: 20px; border: 1px solid #333;">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\kartu_kuning.jpg" class="cert-img" alt="Kartu Kuning Disnaker">
+                        </div>
+                    </div>
+                </div>
+            </label>
+            
+            <label for="check-barber">
+                <input type="checkbox" id="check-barber" class="card-toggle">
+                <div class="card org-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">CV Ad Diwani Group</span>
+                    <h3>Professional Barbershop</h3>
+                    <p class="brief">Keahlian mandiri di luar bidang IT sebagai bentuk diversifikasi keterampilan.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Sertifikat ini menunjukkan sisi kemandirian dan jiwa entrepreneur saya. Pelatihan profesional ini melatih ketelitian tangan, disiplin waktu, dan kemampuan pelayanan pelanggan yang unggul, membuktikan bahwa saya mampu beradaptasi dan sukses di berbagai bidang teknis yang berbeda dan masih aktif sampai sekarang.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\barbershop.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-farm">
+                <input type="checkbox" id="check-farm" class="card-toggle">
+                <div class="card org-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">LPK Urang Anum Creative</span>
+                    <h3>Pengabdian & Kerja Masyarakat</h3>
+                    <p class="brief">Sertifikasi partisipasi dalam program pengembangan masyarakat berbasis potensi lokal.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Mencerminkan keaktifan saya dalam kegiatan sosial dan ekonomi kreatif. Program ini melibatkan interaksi langsung dengan masyarakat untuk mengaplikasikan ilmu dan membantu pengembangan ekonomi lokal, mengasah kepekaan sosial serta kemampuan kerja sama tim di lingkungan yang nyata.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\penetasan-lpk.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-drive">
+                <input type="checkbox" id="check-drive" class="card-toggle">
+                <div class="card org-card">
+                    <div class="plus-icon"></div>
+                    <span class="card-label">Safety Certification</span>
+                    <h3>Sarana / Driving Safety</h3>
+                    <p class="brief">Kepatuhan terhadap standar keselamatan operasional dan mobilitas lapangan.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi Profesional</h5>
+                            <p class="long-desc">Menjamin standar keamanan yang tinggi dalam mobilitas profesional. Sertifikasi ini mencakup pemahaman aturan lalu lintas nasional dan teknik berkendara yang aman, memastikan kesiapan saya dalam menjalankan tugas-tugas lapangan yang memerlukan mobilitas tinggi secara bertanggung jawab.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\sarana.jpeg" class="cert-img">
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <div class="container" id="group05">
+        <span class="section-tag">GROUP 05 // WEBINAR & TECH WORKSHOP</span>
+        <h2 class="section-title">Continuous Learning Assets</h2>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <label for="check-dc-109">
+                <input type="checkbox" id="check-dc-109" class="card-toggle">
+                <div class="card cyber-card" style="padding: 20px;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label">Dunia Coding</span>
+                    <h3>Webinar Series #109</h3>
+                    <p class="brief">Cyber Security 101: Langkah Awal Jadi Specialist Era Digital 2025.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Memahami fondasi utama keamanan siber, jenis ancaman modern, dan peta jalan (roadmap) kompetensi yang dibutuhkan untuk menjadi seorang Cyber Security Specialist yang relevan dengan industri saat ini.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\109.jpeg" class="cert-img" alt="Sertifikat DC 109">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-106">
+                <input type="checkbox" id="check-dc-106" class="card-toggle">
+                <div class="card cyber-card" style="padding: 20px;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label">Dunia Coding</span>
+                    <h3>Webinar Series #106</h3>
+                    <p class="brief">Amankan Website-mu dari Cyber Attack di Era AI.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Edukasi praktis mengenai kerentanan web (seperti OWASP Top 10) dan bagaimana AI digunakan baik sebagai alat serangan maupun pertahanan. Fokus pada strategi mitigasi untuk mengamankan aset digital organisasi.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\106.jpeg" class="cert-img" alt="Sertifikat DC 106">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-114">
+                <input type="checkbox" id="check-dc-114" class="card-toggle">
+                <div class="card cyber-card" style="padding: 20px;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label">Dunia Coding</span>
+                    <h3>Webinar Series #114</h3>
+                    <p class="brief">Roadmap Journey Nol Sampai Siap Kerja (Cyber Security 2026).</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Panduan komprehensif mengenai tahapan belajar, sertifikasi industri yang diakui (CompTIA, EC-Council), dan persiapan portofolio teknis untuk menembus pasar kerja profesional di bidang keamanan siber.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\114.jpeg" class="cert-img" alt="Sertifikat DC 114">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-104">
+                <input type="checkbox" id="check-dc-104" class="card-toggle">
+                <div class="card skill-card" style="padding: 20px; border-top-color: #fbbf24;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label" style="color: #fbbf24;">Dunia Coding</span>
+                    <h3>Webinar Series #104</h3>
+                    <p class="brief">Peluang & Skill Data Science di Masa Depan (AI Era).</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Mempelajari peran krusial data dalam pengembangan AI, teknik analisis data fundamental, dan peluang karier Data Scientist yang semakin dibutuhkan oleh industri di berbagai sektor.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\104.jpeg" class="cert-img" alt="Sertifikat DC 104">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-111">
+                <input type="checkbox" id="check-dc-111" class="card-toggle">
+                <div class="card skill-card" style="padding: 20px; border-top-color: #8b5cf6;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label" style="color: #8b5cf6;">Dunia Coding</span>
+                    <h3>Webinar Series #111</h3>
+                    <p class="brief">Workflow, Relasi, dan Skill Software Engineer Global.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Wawasan mengenai standar kerja internasional, penggunaan tools kolaborasi (Git, Jira), pentingnya networking global, dan *soft skill* yang diperlukan untuk berkarier di perusahaan teknologi luar negeri.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\111.jpeg" class="cert-img" alt="Sertifikat DC 111">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-uiux">
+                <input type="checkbox" id="check-dc-uiux" class="card-toggle">
+                <div class="card skill-card" style="padding: 20px; border-top-color: #ec4899;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label" style="color: #ec4899;">Dunia Coding</span>
+                    <h3>Workshop UI/UX + AI</h3>
+                    <p class="brief">Merancang Landing Page Edu-Tech dengan Gamifikasi.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Workshop praktis 4 jam mengenai prinsip UI/UX, implementasi elemen gamifikasi untuk meningkatkan engagement user, dan penggunaan AI tools untuk mempercepat proses desain landing page.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\ui.jpeg" class="cert-img" alt="Sertifikat DC UIUX">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="check-dc-100">
+                <input type="checkbox" id="check-dc-100" class="card-toggle">
+                <div class="card skill-card" style="padding: 20px; border-top-color: #39ff14;">
+                    <div class="plus-icon" style="top: 20px; right: 20px;"></div>
+                    <span class="card-label" style="color: #39ff14;">Dunia Coding</span>
+                    <h3>Webinar Series #100</h3>
+                    <p class="brief">Bikin Website Kilat! Tanpa Coding & Langsung Online.</p>
+                    <div class="details">
+                        <div class="info-block">
+                            <h5>Deskripsi:</h5>
+                            <p class="long-desc">Pelatihan menggunakan No-Code tools (seperti WordPress/Webflow) untuk membangun website profesional secara cepat, mulai dari setup domain hingga publikasi secara online tanpa perlu menulis kode.</p>
+                        </div>
+                        <div class="cert-container">
+                            <img src="C:\Users\user\OneDrive\Dokumen\sertifikat\100.jpeg" class="cert-img" alt="Sertifikat DC 100">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+        </div>
+    </div>
+<footer>
+        <div class="foot-text">
+            <p><strong>Ali Akbar</strong> | S1 Teknologi Informasi Universitas Sapta Mandiri</p>
+            <p>Balangan, Kalimantan Selatan, Indonesia</p>
+            <p style="margin-top: 15px; opacity: 0.3; font-size: 0.7rem;">Code Version: 5.1.0-COMPLETE-VAULT | Total Assets: 14 Verifiable Items</p>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lb">&times;</span>
+        <img src="" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.cert-img').forEach(image => {
+            image.onclick = (e) => {
+                e.stopPropagation(); 
+                e.preventDefault();
+                lightbox.classList.add('active');
+                lbImg.src = image.getAttribute('src');
+            }
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
+
+        // --- KODE JAVASCRIPT UNTUK DROPDOWN ---
+        function toggleMenu() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function copyLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("🚀 Link portofolio berhasil disalin!");
+            });
+            toggleMenu();
+        }
+
+        // Menutup dropdown jika klik di luar menu
+        window.onclick = function(event) {
+            if (!event.target.closest('.menu-container')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i].classList.contains('show')) {
+                        dropdowns[i].classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    </body>
+</html>
