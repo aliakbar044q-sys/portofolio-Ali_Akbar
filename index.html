@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Akbar | Full Professional Portfolio 2026</title>
+    <meta name="viewport" content="width=1200">
+    <title>Ali Akbar | Full Professional Portofolio 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,12 +11,33 @@
             --cyber: #ff003c; --tech: #39ff14; --text: #e2e8f0; --border: #1e293b;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; line-height: 1.6; padding-top: 100px; }
+        body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: 'Poppins', sans-serif; 
+    line-height: 1.6; 
+    padding-top: 100px; 
+    /* Tambahkan ini supaya lebar terkunci */
+    width: 1200px; 
+    margin: 0 auto; 
+    overflow-x: auto; 
+}
 
         nav { 
-            display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; 
-            background: rgba(5, 7, 10, 0.95); position: fixed; width: 100%; top:0; z-index: 1000;
-            border-bottom: 1px solid var(--border); backdrop-filter: blur(20px);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 5%; 
+    background: rgba(5, 7, 10, 0.95); 
+    position: fixed; 
+    width: 1200px; /* Mengunci lebar navigasi */
+    left: 50%; /* Mengetengahkan navigasi */
+    transform: translateX(-50%); /* Mengetengahkan navigasi */
+    top: 0; 
+    z-index: 1000;
+    border-bottom: 1px solid var(--border); 
+    backdrop-filter: blur(20px);
+}
         }
         .logo { font-family: 'Fira Code'; font-weight: 800; color: var(--accent); font-size: 1.2rem; }
         .sys-status { color: var(--tech); font-size: 0.7rem; font-weight: bold; border: 1px solid var(--tech); padding: 2px 10px; border-radius: 5px; }
@@ -244,6 +265,56 @@ nav {
 
         /* Class untuk memunculkan menu via JavaScript */
         .show { display: block !important; }
+
+        /* Media Query untuk layar dengan lebar maks 768px (HP) */
+@media (max-width: 768px) {
+    /* 1. Stack (Tumpuk) link-link di Header agar tidak berantakan */
+    header ul {
+        display: flex;
+        flex-direction: column; /* Mengubah flex-direction agar menumpuk ke bawah */
+        text-align: center;
+        gap: 15px; /* Memberi jarak antar link */
+        padding: 20px 0;
+        margin-top: 10px;
+    }
+
+    /* Hilangkan logo di samping saat mode mobile agar fokus pada navigasi */
+    header .logo {
+        display: none;
+    }
+
+    /* 2. Stack (Tumpuk) Tombol Media Sosial */
+    .social-links {
+        display: flex;
+        flex-direction: column; /* Menumpuk tombol media sosial */
+        gap: 10px;
+        width: 80%; /* Batasi lebarnya agar rapi */
+        margin: 0 auto; /* Tengah-tengah */
+    }
+
+    /* 3. Menyesuaikan Margin dan Padding agar Tulisan Tidak Keluar Layar */
+    .profile-section, .about-me, .vault-section {
+        padding: 20px;
+        margin: 0;
+        width: 100%; /* Pastikan lebarnya penuh */
+    }
+
+    /* 4. Menyesuaikan Tulisan agar Terbaca di HP */
+    .profile-section h1, .profile-section p {
+        font-size: 1.1em; /* Sesuaikan ukuran font, misal sedikit lebih besar agar terbaca */
+    }
+
+    /* 5. Menyesuaikan Tampilan Gambar Sertifikat di HP */
+    .vault-section .certificate-container img {
+        max-width: 100%; /* Pastikan gambar sertifikat tidak keluar layar */
+        height: auto;
+    }
+
+    /* Opsional: Jika kamu ingin foto profil juga lebih rapi di mobile */
+    .profile-img-container {
+        margin-bottom: 20px; /* Jarak antara foto dan teks di bawahnya */
+    }
+}
 
     </style>
 
