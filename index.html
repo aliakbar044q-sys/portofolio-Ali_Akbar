@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Ali Akbar | Full Professional Portofolio 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -11,17 +11,20 @@
             --cyber: #ff003c; --tech: #39ff14; --text: #e2e8f0; --border: #1e293b;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
         body { 
     background: var(--bg); 
     color: var(--text); 
     font-family: 'Poppins', sans-serif; 
     line-height: 1.6; 
     padding-top: 100px; 
-    /* Tambahkan ini supaya lebar terkunci */
-    width: 1200px; 
-    margin: 0 auto; 
-    overflow-x: auto; 
-}
+
+    /* --- Bagian yang diubah --- */
+    width: 100%;             /* Mengikuti lebar layar apapun */
+    max-width: 1200px;       /* Tapi jangan lebih lebar dari 1200px di PC */
+    margin: 0 auto;          /* Biar tetap di tengah-tengah */
+    overflow-x: hidden;      /* Mencegah layar goyang kanan-kiri */
+} 
 
         nav { 
     display: flex; 
@@ -30,15 +33,18 @@
     padding: 15px 5%; 
     background: rgba(5, 7, 10, 0.95); 
     position: fixed; 
-    width: 1200px; /* Mengunci lebar navigasi */
-    left: 50%; /* Mengetengahkan navigasi */
-    transform: translateX(-50%); /* Mengetengahkan navigasi */
+    /* --- Bagian yang diubah --- */
+    width: 100%;             /* Navigasi penuh selebar layar */
+    max-width: 1200px;       /* Tapi di PC lebarnya sama dengan body (1200px) */
+    left: 50%;               /* Taruh di tengah */
+    transform: translateX(-50%); /* Teknik agar benar-benar presisi di tengah */
+    /* -------------------------- */
     top: 0; 
     z-index: 1000;
     border-bottom: 1px solid var(--border); 
     backdrop-filter: blur(20px);
 }
-        }
+        
         .logo { font-family: 'Fira Code'; font-weight: 800; color: var(--accent); font-size: 1.2rem; }
         .sys-status { color: var(--tech); font-size: 0.7rem; font-weight: bold; border: 1px solid var(--tech); padding: 2px 10px; border-radius: 5px; }
 
@@ -1178,6 +1184,18 @@ nav {
 
         </div>
     </div>
+
+    <footer>
+    <div class="foot-text">
+        <p>&copy; 2026 Ali Akbar | Professional Portfolio</p>
+        
+        <div style="margin-top: 15px; font-family: 'Fira Code', monospace; font-size: 0.65rem; color: #64748b;">
+            STATUS: <span style="color: var(--tech);">SYSTEM_ACTIVE</span> | 
+            VISITORS: <img src="https://hitwebcounter.com/counter/counter.php?page=9452311&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" style="vertical-align: middle; height: 12px; filter: opacity(0.8);">
+        </div>
+    </div>
+</footer>
+    
 <footer>
         <div class="foot-text">
             <p><strong>Ali Akbar</strong> | S1 Teknologi Informasi Universitas Sapta Mandiri</p>
